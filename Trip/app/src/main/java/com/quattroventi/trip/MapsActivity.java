@@ -13,8 +13,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.quattroventi.trip.Utils.PermissionUtils;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback ,
         GoogleMap.OnMyLocationButtonClickListener,
@@ -22,6 +24,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private GoogleMap mMap;
+    private UiSettings mUiSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +38,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -52,6 +46,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
        getMyLocation();
+       //Abilito alcune funzinalità della mappa
+        mUiSettings = mMap.getUiSettings();
+        mUiSettings.setZoomControlsEnabled(true);
+        mUiSettings.setMyLocationButtonEnabled(true);
+        mUiSettings.setScrollGesturesEnabled(true);
+        mUiSettings.setZoomGesturesEnabled(true);
+        mUiSettings.setTiltGesturesEnabled(true);
+        mUiSettings.setRotateGesturesEnabled(true);
+
     }
 
     //gestione del click bottone "Vai alla mia posizione"
@@ -78,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission to access the location is missing.
-            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
+            PermissionUtils.requestPermission(this, 1,
                     Manifest.permission.ACCESS_FINE_LOCATION, true);
         } else if (mMap != null) {
             // Access to the location has been granted to the app.

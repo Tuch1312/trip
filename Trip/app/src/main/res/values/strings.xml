@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Trip</string>
     <string name="title_activity_maps">Home</string>
+    <string name="permessi_mancanti">Non sono stati garantiti e permessi necessari</string>
 </resources>
