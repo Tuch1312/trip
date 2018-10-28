@@ -22,11 +22,18 @@ public class Fermata implements Serializable {
    private String descrizione;
    private String note;
    private Constant.TIPO_DURATA tipoDurata;
+   private String placeId;
+   private String ID;
     /**
      * Numero della notte dalla partenza del viaggio (la prima notte è 1)
      */
    private int seqNotte;
    private float costo;
+
+
+
+
+
 
     public LatLng getCoordinate() {
         return coordinate;

@@ -6,9 +6,15 @@ import java.util.List;
 /**
  * Rappresenta una tappa del viaggio (ad Es. una città, un villaggio turistico, una località)
  */
-public class Tappa {
+public class Tappa extends Fermata {
     private LinkedList<Cdf> listaCoseDaFare;
     private LinkedList<PausaNotte> listaNotti;
+
+
+    public Tappa() {
+        listaCoseDaFare = new LinkedList<>();
+        listaNotti = new LinkedList<>();
+    }
 
 
     public LinkedList<Cdf> getListaCoseDaFare() {

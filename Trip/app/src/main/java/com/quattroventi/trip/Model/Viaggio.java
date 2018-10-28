@@ -11,4 +11,5 @@ public class Viaggio {
     private Ppa partenza;
     private Ppa arrivo;
     private float costo;
+    private String ID;
 }

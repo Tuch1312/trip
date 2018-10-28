@@ -17,6 +17,7 @@ public class Cdp implements Serializable {
     private boolean obbligatorio;
     private Date data;
     private float Costo;
+    private String ID;
 
     public LatLng getCooridinata() {
         return cooridinata;

@@ -16,6 +16,7 @@ public class Ppa {
    private  String descrizione;
    private String indirizzo;
    private Date oraPartenzaArrivo;
+    private String ID;
 
     public String getDescrizione() {
         return descrizione;

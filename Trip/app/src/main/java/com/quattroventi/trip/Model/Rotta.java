@@ -19,6 +19,7 @@ public class Rotta implements Serializable {
     private float costoAutostrada;
     private LinkedList<Cdp> ListaSpeseExtra;
     private int seqRotta;
+    private String ID;
 
 
     public Tappa getPartenza() {
