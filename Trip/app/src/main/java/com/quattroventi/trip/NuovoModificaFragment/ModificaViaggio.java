@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.quattroventi.trip.R;
 
 public class ModificaViaggio extends Fragment {
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,32 +23,29 @@ public class ModificaViaggio extends Fragment {
         if(savedInstanceState == null){
             // Get back arguments
             if(getArguments() != null) {
-                position = getArguments().getInt("position", 0);
+                //TODO residuo bellico, gestire argomenti in entrata
+                // position = getArguments().getInt("position", 0);
             }
         }
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup parent, @Nullable Bundle savedInstanceState) {
 
         // Inflate the xml file for the fragment
-        return inflater.inflate(R.layout.fragment_pizza_detail, parent, false);
+        return inflater.inflate(R.layout.fragment_modifica_viaggio, parent, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Set values for view here
-        tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        tvDetails = (TextView) view.findViewById(R.id.tvDetails);
-
-        // update view
-        tvTitle.setText(Pizza.pizzaMenu[position]);
-        tvDetails.setText(Pizza.pizzaDetails[position]);
+      //TODO logica di inizializzazione
     }
 
     // Activity is calling this to update view on Fragment
     public void updateView(int position){
-        tvTitle.setText(Pizza.pizzaMenu[position]);
-        tvDetails.setText(Pizza.pizzaDetails[position]);
+     //TODO lgica di aggiornamento
     }
 }
