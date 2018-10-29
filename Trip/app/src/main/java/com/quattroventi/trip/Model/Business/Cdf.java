@@ -1,4 +1,4 @@
-package com.quattroventi.trip.Model;
+package com.quattroventi.trip.Model.Business;
 
 import java.io.Serializable;
 

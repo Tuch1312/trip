@@ -1,7 +1,6 @@
-package com.quattroventi.trip.Model;
+package com.quattroventi.trip.Model.Business;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Rappresenta una tappa del viaggio (ad Es. una città, un villaggio turistico, una località)

@@ -1,7 +1,7 @@
 package com.quattroventi.trip.Utils;
 
 import com.google.android.gms.location.places.Place;
-import com.quattroventi.trip.Model.Fermata;
+import com.quattroventi.trip.Model.Business.Fermata;
 
 public class Converter {
 

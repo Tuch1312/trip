@@ -1,6 +1,4 @@
-package com.quattroventi.trip.Model;
-
-import android.print.PrinterId;
+package com.quattroventi.trip.Model.Business;
 
 import com.google.android.gms.maps.model.LatLng;
 
