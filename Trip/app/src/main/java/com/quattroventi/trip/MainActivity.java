@@ -107,25 +107,6 @@ public class MainActivity extends AppCompatActivity
         //BARRA RICERCA - FINE
 
 
-        Button b = findViewById(R.id.aaa);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               NuovoModificaActivity.launch(MainActivity.this, Constant.FRAGMENT_NUOVO_VIAGGIO_KEY);
-            }
-        });
-        Button b2 = findViewById(R.id.aab);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                NuovoModificaActivity.launch(MainActivity.this, Constant.FRAGMENT_MODIFICA_VIAGGIO_KEY);
-
-
-            }
-        });
-
-
 
 
 
