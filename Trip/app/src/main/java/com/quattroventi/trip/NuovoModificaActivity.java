@@ -30,9 +30,10 @@ public class NuovoModificaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuovo_modifica);
+        setFragment(Constant.FRAGMENT_NUOVO_VIAGGIO_KEY);
         if (getIntent() != null)  {
             if (getIntent().getStringExtra("fragmentKey") != null) {
-                setFragment(getIntent().getStringExtra("fragmentKey"));
+
             }
         }
 
@@ -70,7 +71,8 @@ public class NuovoModificaActivity extends AppCompatActivity {
             }
 
             FragmentTransaction ft = fm.beginTransaction();// begin  FragmentTransaction
-            ft.add(R.id.frContainer, fragment, fragmentKey);                                // add    Fragment
+            ft.add(R.id.frContainer, fragment, fragmentKey);
+            ft.replace(R.id.frContainer, fragment);          // add    Fragment
             ft.commit();
 
 

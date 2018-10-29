@@ -32,26 +32,33 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".NuovoModificaFragment.NuovoViaggio">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <!-- TODO: Update blank fragment layout -->
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="249dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:text="Luogo di partenza" />
-
-            <fragment
-                android:id="@+id/place_autocomplete_fragment2"
-                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_weight="1" />
+                android:layout_height="match_parent"
+                tools:context=".NuovoModificaFragment.NuovoViaggio">
+
+                <!-- TODO: Update blank fragment layout -->
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="249dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Luogo di partenza" />
+
+                <fragment
+                    android:id="@+id/place_autocomplete_fragment2"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_weight="1" />
 
 
+            </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
 </android.support.design.widget.CoordinatorLayout>
