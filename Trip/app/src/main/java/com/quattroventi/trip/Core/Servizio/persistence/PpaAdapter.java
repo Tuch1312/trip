@@ -1,9 +1,11 @@
-package com.quattroventi.trip.Model.Servizio;
+package com.quattroventi.trip.Core.Servizio.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import static com.quattroventi.trip.Core.Servizio.persistence.TableConstant.*;
+
 
 import com.quattroventi.trip.Model.Business.Ppa;
 
@@ -33,12 +35,12 @@ public class PpaAdapter {
     public void addPpa(Ppa ppa){
         open();
         ContentValues valori = new ContentValues();
-        valori.put(DbHelper.KEY_ID_PPA, ppa.getID());
-        valori.put(DbHelper.KEY_NOME_PPA, ppa.getNome());
-        valori.put(DbHelper.KEY_INDIRIZZO_PPA, ppa.getIndirizzo());
-        valori.put(DbHelper.KEY_LAT_PPA, ppa.getCoordinate().latitude);
-        valori.put(DbHelper.KEY_LON_PPA,ppa.getCoordinate().longitude);
-        database.insert(DbHelper.TABLE_PPA,null, valori);
+        valori.put(KEY_ID, ppa.getID());
+        valori.put(KEY_NOME, ppa.getNome());
+        valori.put(KEY_INDIRIZZO, ppa.getIndirizzo());
+        valori.put(KEY_LAT, ppa.getCoordinate().latitude);
+        valori.put(KEY_LON,ppa.getCoordinate().longitude);
+        database.insert(TABLE_PPA,null, valori);
         close();
     }
 }

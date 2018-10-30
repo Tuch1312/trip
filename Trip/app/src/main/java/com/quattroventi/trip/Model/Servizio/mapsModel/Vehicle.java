@@ -34,7 +34,7 @@ public class Vehicle implements Serializable {
     public String name;
 
     /**
-     * The type of vehicle that runs on this line. See the {@
+     * The type of vehicle that runs on this line. See the
      * VehicleType} documentation for a complete list of supported values.
      */
     public VehicleType type;

@@ -16,7 +16,7 @@
 package com.quattroventi.trip.Model.Servizio.mapsModel;
 
 /**
- * The status result for a single {@link com.google.maps.model.GeocodedWaypoint}.
+ * The status result for a single
  *
  * @see <a href="https://developers.google.com/maps/documentation/directions/intro#StatusCodes">
  * Documentation on status codes</a>
