@@ -17,10 +17,10 @@ public class DbHelper extends  SQLiteOpenHelper{
     public static final String TABLE_ROTTA = "rotta";
     public static final String TABLE_TAPPA = "tappa";
 
-    private static final String SQL_CREATE_VIAGGIO = "CREATE TABLE viaggio ("
     private static final String SQL_CREATE_PPA = "CREATE TABLE puntiPartenzaArrivo " +
             "(_id String primary key, nome String,lat double,lon double,descrizione String," +
             "indirizzo String;";
+
     //chiavi Ppa
     public static final String KEY_ID_PPA = "_id";
     public static final String KEY_NOME_PPA = "nome";
@@ -28,6 +28,8 @@ public class DbHelper extends  SQLiteOpenHelper{
     public static final String KEY_LON_PPA = "lon";
     public static final String KEY_DESCRIZIONE_PPA = "descrizione";
     public static final String KEY_INDIRIZZO_PPA = "indirizzo";
+
+    //Costruttore
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -38,6 +40,7 @@ public class DbHelper extends  SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PPA);
+        onCreate(db);
     }
 }

@@ -11,10 +11,13 @@ public class PpaAdapter {
     private Context context;
     private SQLiteDatabase database;
     private DbHelper dbHelper;
+    private boolean firstacces;
 
+    //Costruttore
     public PpaAdapter(Context context){
         this.context = context;
     }
+
 
     private  PpaAdapter open() throws SQLException{
         dbHelper = new DbHelper(context);
@@ -27,7 +30,7 @@ public class PpaAdapter {
         database.close();
     }
 
-    protected void addPpa(Ppa ppa){
+    public void addPpa(Ppa ppa){
         open();
         ContentValues valori = new ContentValues();
         valori.put(DbHelper.KEY_ID_PPA, ppa.getID());
@@ -36,5 +39,6 @@ public class PpaAdapter {
         valori.put(DbHelper.KEY_LAT_PPA, ppa.getCoordinate().latitude);
         valori.put(DbHelper.KEY_LON_PPA,ppa.getCoordinate().longitude);
         database.insert(DbHelper.TABLE_PPA,null, valori);
+        close();
     }
 }

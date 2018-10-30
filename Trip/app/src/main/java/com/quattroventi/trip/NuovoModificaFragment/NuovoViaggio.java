@@ -21,6 +21,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.quattroventi.trip.Model.Business.Ppa;
+import com.quattroventi.trip.Model.Servizio.DbHelper;
+import com.quattroventi.trip.Model.Servizio.PpaAdapter;
 import com.quattroventi.trip.NuovoModificaActivity;
 import com.quattroventi.trip.R;
 import android.Manifest;
@@ -60,6 +62,7 @@ import com.quattroventi.trip.Utils.PermissionUtils;
 
 public class NuovoViaggio extends Fragment {
 
+    PpaAdapter prova = new PpaAdapter(getContext());
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +75,6 @@ public class NuovoViaggio extends Fragment {
             }
         }
     }
-
-
-
 
 
 
@@ -104,8 +104,7 @@ public class NuovoViaggio extends Fragment {
                 partenza.setNome((String) place.getName());
                 partenza.setIndirizzo((String) place.getAddress());
                 t.setText(partenza.getIndirizzo());
-                //inserisci ppa in db
-                //Viaggio v = new Viaggio
+                prova.addPpa(partenza);
                 //((NuovoModificaActivity) getActivity()).setFragment(Constant.FRAGMENT_MODIFICA_VIAGGIO_KEY);
 
 
