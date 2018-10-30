@@ -52,6 +52,14 @@ public class Ppa {
         return oraPartenzaArrivo;
     }
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public void setOraPartenzaArrivo(Date oraPartenzaArrivo) {
         this.oraPartenzaArrivo = oraPartenzaArrivo;
     }
