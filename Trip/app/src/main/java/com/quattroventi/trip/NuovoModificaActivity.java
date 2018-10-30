@@ -1,23 +1,18 @@
 package com.quattroventi.trip;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.quattroventi.trip.NuovoModificaFragment.ModificaViaggio;
 import com.quattroventi.trip.NuovoModificaFragment.NuovoViaggio;
 import com.quattroventi.trip.Utils.Constant;
 import com.quattroventi.trip.Utils.Utils;
-
-import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -30,7 +25,7 @@ public class NuovoModificaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuovo_modifica);
-        if (getIntent() != null)  {
+        if (getIntent() != null) {
             if (getIntent().getStringExtra("fragmentKey") != null) {
                 setFragment(getIntent().getStringExtra("fragmentKey"));
             }
@@ -40,10 +35,9 @@ public class NuovoModificaActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * @param fragmentKey : constant.java fragment key, identificatore fragment
      */
-    public void setFragment(String fragmentKey)  {
+    public void setFragment(String fragmentKey) {
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentByTag(fragmentKey);
@@ -85,9 +79,6 @@ public class NuovoModificaActivity extends AppCompatActivity {
             context.startActivity(intent);
         }
     }
-
-
-
 
 
 }

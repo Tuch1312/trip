@@ -5,15 +5,15 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.Date;
 
 /**
-Punto di partenza/arrivo, rappresenta la partenza e l'arrivo del viaggio. un punto sulla mappa con collegata solo una linea
+ * Punto di partenza/arrivo, rappresenta la partenza e l'arrivo del viaggio. un punto sulla mappa con collegata solo una linea
  */
 
 public class Ppa {
-   private LatLng coordinate;
-   private String nome;
-   private  String descrizione;
-   private String indirizzo;
-   private Date oraPartenzaArrivo;
+    private LatLng coordinate;
+    private String nome;
+    private String descrizione;
+    private String indirizzo;
+    private Date oraPartenzaArrivo;
     private String ID;
 
     public String getDescrizione() {
