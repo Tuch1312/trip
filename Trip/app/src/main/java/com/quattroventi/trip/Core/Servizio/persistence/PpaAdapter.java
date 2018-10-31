@@ -9,6 +9,7 @@ import static com.quattroventi.trip.Core.Servizio.persistence.TableConstant.*;
 
 import com.quattroventi.trip.Model.Business.Ppa;
 import com.quattroventi.trip.Model.Business.Ppa;
+import com.quattroventi.trip.Utils.Converter;
 
 import java.util.List;
 
@@ -27,8 +28,7 @@ public class PpaAdapter extends GenericAdapter{
         valori.put(KEY_ID, ppa.getID());
         valori.put(KEY_NOME, ppa.getNome());
         valori.put(KEY_INDIRIZZO, ppa.getIndirizzo());
-        valori.put(KEY_LAT, ppa.getCoordinate().latitude);
-        valori.put(KEY_LON,ppa.getCoordinate().longitude);
+        valori.put(KEY_COORDINATE, Converter.latLngToDbString(ppa.getCoordinate()));
         database.insert(TABLE_PPA,null, valori);
         close();
     }
