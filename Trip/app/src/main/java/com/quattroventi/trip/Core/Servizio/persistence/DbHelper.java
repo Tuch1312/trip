@@ -17,11 +17,7 @@ public class DbHelper extends  SQLiteOpenHelper{
 
 
     // SQL CREA TABELLE --- INIZIO
-        private static String getCreateStatement(String table) {
-           return CREATE + DB_NAME + "." + table + CREATE_START + KEY_ID + PRIMARY_KEY_AUT + V;
-        }
 
-    
     
         public static final String SQL_CREATE_PPA =
                         getCreateStatement(TABLE_PPA) +
@@ -134,18 +130,6 @@ public class DbHelper extends  SQLiteOpenHelper{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //Costruttore
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -160,4 +144,13 @@ public class DbHelper extends  SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PPA);
         onCreate(db);
     }
+
+    private static String getCreateStatement(String table) {
+        return CREATE + DB_NAME + "." + table + CREATE_START + KEY_ID + PRIMARY_KEY_AUT + V;
+    }
+
+
+
+
+
 }

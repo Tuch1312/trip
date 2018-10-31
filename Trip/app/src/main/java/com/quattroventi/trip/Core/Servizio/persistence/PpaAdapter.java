@@ -8,28 +8,17 @@ import static com.quattroventi.trip.Core.Servizio.persistence.TableConstant.*;
 
 
 import com.quattroventi.trip.Model.Business.Ppa;
+import com.quattroventi.trip.Model.Business.Ppa;
 
-public class PpaAdapter {
-    private Context context;
-    private SQLiteDatabase database;
-    private DbHelper dbHelper;
+import java.util.List;
+
+public class PpaAdapter extends GenericAdapter{
+
     private boolean firstacces;
 
     //Costruttore
-    public PpaAdapter(Context context){
-        this.context = context;
-    }
-
-
-    private  PpaAdapter open() throws SQLException{
-        dbHelper = new DbHelper(context);
-        database = dbHelper.getWritableDatabase();
-        return this;
-    }
-
-    private void close() {
-        dbHelper.close();
-        database.close();
+    public PpaAdapter(Context context) {
+       super(context);
     }
 
     public void addPpa(Ppa ppa){
@@ -43,4 +32,10 @@ public class PpaAdapter {
         database.insert(TABLE_PPA,null, valori);
         close();
     }
+
+
+    public List<Ppa> getByViaggio() {return null;}//TODO getByViaggio (ppa))
+    public Ppa getById() {return null;}//TODO getById (ppa))
+    public boolean update() {return false;}//TODO update (ppa))
+    public boolean insert() {return false;}//TODO insert (ppa))
 }
