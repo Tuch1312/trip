@@ -10,29 +10,25 @@ import java.util.Date;
 /**
  * Elemento di base che rappresenta una sosta da qualche parte di qualche tipo
  */
-public class Fermata implements Serializable {
-   private LatLng coordinate;
+public abstract class Fermata implements Serializable {
+    private LatLng coordinate;
     /**
      * la durata èespressa in intero e "l'unita di misura" di questo numero è definita da <code>tipoDurata</code>
      */
-   private int durataSosta;
-   private Date oraArrivo;
-   private Date oraPartenza;
-   private String nome;
-   private String descrizione;
-   private String note;
-   private Constant.TIPO_DURATA tipoDurata;
-   private String placeId;
-   private String ID;
+    private int durataSosta;
+    private Date oraArrivo;
+    private Date oraPartenza;
+    private String nome;
+    private String descrizione;
+    private String note;
+    private Constant.TIPO_DURATA tipoDurata;
+    private String placeId;
+    private String ID;
     /**
      * Numero della notte dalla partenza del viaggio (la prima notte è 1)
      */
-   private int seqNotte;
-   private float costo;
-
-
-
-
+    private int seqNotte;
+    private float costo;
 
 
     public LatLng getCoordinate() {

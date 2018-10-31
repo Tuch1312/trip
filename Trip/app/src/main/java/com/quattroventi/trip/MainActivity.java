@@ -1,26 +1,24 @@
 package com.quattroventi.trip;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -30,14 +28,22 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.quattroventi.trip.Core.Servizio.MapsDirectionApiHelper;
+import com.quattroventi.trip.Model.Business.Fermata;
+import com.quattroventi.trip.Model.Business.Tappa;
+import com.quattroventi.trip.Model.Servizio.MapsDirectionApiOption;
 import com.quattroventi.trip.Utils.Constant;
 import com.quattroventi.trip.Utils.PermissionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
-        ActivityCompat.OnRequestPermissionsResultCallback  {
+        ActivityCompat.OnRequestPermissionsResultCallback {
 
 
     //VARIABILI - INIZIO ---------------------------------------
@@ -46,9 +52,6 @@ public class MainActivity extends AppCompatActivity
 
 
     //VARIABILI - FINE ---------------------------------------
-
-
-
 
 
     @Override
@@ -94,8 +97,19 @@ public class MainActivity extends AppCompatActivity
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Log.i("tag", "Place: " + place.getName() + "coord : " + place.getLatLng().toString() );
+                Fermata f = new Tappa();
+                f.setCoordinate(new LatLng(45.283828, 09.105340));
+                f.setNome("prova");
+                MapsDirectionApiOption o = new MapsDirectionApiOption();
+                o.setAlternative(true);
+                o.setMezzo_usato(Constant.DIRECTION_OPTION_MODE.BICI);
+                List<Constant.DIRECTION_OPTION_EVITA> l = new ArrayList<>();
+                l.add(Constant.DIRECTION_OPTION_EVITA.PEDAGGI);
+                l.add(Constant.DIRECTION_OPTION_EVITA.TRAGHETI);
+                o.setLista_limitazioni(l);
+                MapsDirectionApiHelper m = new MapsDirectionApiHelper();
+                m.call(MainActivity.this, f, place, o);
+
             }
 
             @Override
@@ -105,19 +119,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
         //BARRA RICERCA - FINE
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

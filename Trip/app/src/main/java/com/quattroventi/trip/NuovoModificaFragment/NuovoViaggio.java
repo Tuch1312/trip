@@ -1,13 +1,10 @@
 package com.quattroventi.trip.NuovoModificaFragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,50 +13,16 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.quattroventi.trip.Model.Business.Ppa;
-import com.quattroventi.trip.NuovoModificaActivity;
+import com.quattroventi.trip.Core.Servizio.persistence.PpaAdapter;
 import com.quattroventi.trip.R;
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
-import com.quattroventi.trip.Utils.Constant;
-import com.quattroventi.trip.Utils.PermissionUtils;
+import android.widget.TextView;
 
 
 public class NuovoViaggio extends Fragment {
 
+    PpaAdapter prova = new PpaAdapter(getContext());
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +35,6 @@ public class NuovoViaggio extends Fragment {
             }
         }
     }
-
-
-
 
 
 
@@ -104,8 +64,7 @@ public class NuovoViaggio extends Fragment {
                 partenza.setNome((String) place.getName());
                 partenza.setIndirizzo((String) place.getAddress());
                 t.setText(partenza.getIndirizzo());
-                //inserisci ppa in db
-                //Viaggio v = new Viaggio
+                prova.addPpa(partenza);
                 //((NuovoModificaActivity) getActivity()).setFragment(Constant.FRAGMENT_MODIFICA_VIAGGIO_KEY);
 
 
