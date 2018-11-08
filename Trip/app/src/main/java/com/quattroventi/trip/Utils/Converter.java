@@ -39,7 +39,7 @@ public class Converter {
         return new LatLng(latLng.lat, latLng.lng);
     }
 
-    public String dateTodbString(Date date) {
+    public static String dateTodbString(Date date) {
         if (date != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy HH-mm");
             return sdf.format(date);
@@ -51,7 +51,7 @@ public class Converter {
     }
 
 
-    public Date dateTodbString(String date) {
+    public static Date dateTodbString(String date) {
         if (date != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy HH-mm");
             try {
@@ -65,6 +65,9 @@ public class Converter {
 
 
     }
+
+
+
 
 
 }
