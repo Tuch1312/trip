@@ -11,9 +11,23 @@ public class CdpAdapter extends GenericAdapter {
         super(context);
     }
 
-    public List<Cdp> getByViaggio() {return null;}//TODO getByViaggio (cdp))
-    public Cdp getById() {return null;}//TODO getById (cdp))
-    public List<Cdp> getByRotta() {return null;}//TODO getByRotta (cdp))
-    public boolean update() {return false;}//TODO update (cdp))
-    public boolean insert() {return false;}//TODO insert (cdp))
+    public List<Cdp> getByViaggio() {
+        return null;
+    }//TODO getByViaggio (cdp))
+
+    public Cdp getById() {
+        return null;
+    }//TODO getById (cdp))
+
+    public List<Cdp> getByRotta() {
+        return null;
+    }//TODO getByRotta (cdp))
+
+    public boolean update() {
+        return false;
+    }//TODO update (cdp))
+
+    public boolean insert() {
+        return false;
+    }//TODO insert (cdp))
 }

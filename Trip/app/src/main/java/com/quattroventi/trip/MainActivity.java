@@ -30,9 +30,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.quattroventi.trip.Core.Servizio.MapsDirectionApiHelper;
+import com.quattroventi.trip.Core.Servizio.MapsDrower;
 import com.quattroventi.trip.Model.Business.Fermata;
 import com.quattroventi.trip.Model.Business.Tappa;
 import com.quattroventi.trip.Model.Servizio.MapsDirectionApiOption;
+import com.quattroventi.trip.Model.Servizio.mapsModel.DirectionsRoute;
 import com.quattroventi.trip.Utils.Constant;
 import com.quattroventi.trip.Utils.PermissionUtils;
 
@@ -108,7 +110,9 @@ public class MainActivity extends AppCompatActivity
                 l.add(Constant.DIRECTION_OPTION_EVITA.TRAGHETI);
                 o.setLista_limitazioni(l);
                 MapsDirectionApiHelper m = new MapsDirectionApiHelper();
-                m.call(MainActivity.this, f, place, o);
+                MapsDrower d = new MapsDrower();
+                List<DirectionsRoute> li = m.call(MainActivity.this, f, place, o);
+                d.drawRouteOnMap(mMap, li);
 
             }
 

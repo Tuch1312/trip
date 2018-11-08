@@ -5,7 +5,6 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.quattroventi.trip.R;
 
 public class RequestCore {
 
@@ -37,7 +36,6 @@ public class RequestCore {
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
-
 
 
 }

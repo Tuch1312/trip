@@ -7,22 +7,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.quattroventi.trip.Model.Business.Ppa;
 import com.quattroventi.trip.Core.Servizio.persistence.PpaAdapter;
+import com.quattroventi.trip.Model.Business.Ppa;
 import com.quattroventi.trip.R;
-
-import android.widget.TextView;
 
 
 public class NuovoViaggio extends Fragment {
 
     PpaAdapter prova = new PpaAdapter(getContext());
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,6 @@ public class NuovoViaggio extends Fragment {
             }
         }
     }
-
 
 
     @Override
@@ -80,7 +78,7 @@ public class NuovoViaggio extends Fragment {
     }
 
     // Activity is calling this to update view on Fragment
-    public void updateView(int position){
+    public void updateView(int position) {
         //TODO lgica di aggiornamento
     }
 }

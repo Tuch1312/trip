@@ -16,7 +16,7 @@ public abstract class GenericAdapter {
         this.context = context;
     }
 
-    protected   void open() throws SQLException {
+    protected void open() throws SQLException {
         dbHelper = new DbHelper(context);
         database = dbHelper.getWritableDatabase();
         ContentValues c = new ContentValues();

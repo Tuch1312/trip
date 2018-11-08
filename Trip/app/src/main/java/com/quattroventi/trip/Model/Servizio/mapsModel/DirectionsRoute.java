@@ -1,5 +1,3 @@
-
-
 package com.quattroventi.trip.Model.Servizio.mapsModel;
 
 import java.io.Serializable;

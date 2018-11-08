@@ -13,7 +13,6 @@ import com.quattroventi.trip.Model.Business.Fermata;
 import com.quattroventi.trip.Model.Servizio.MapsDirectionApiOption;
 import com.quattroventi.trip.Model.Servizio.mapsModel.DirectionsResult;
 import com.quattroventi.trip.Model.Servizio.mapsModel.DirectionsRoute;
-import com.quattroventi.trip.Model.Servizio.mapsModel.GeocodedWaypoint;
 import com.quattroventi.trip.Model.Servizio.mapsModel.GeocodedWaypointStatus;
 import com.quattroventi.trip.Model.Servizio.mapsModel.TravelMode;
 import com.quattroventi.trip.R;
@@ -22,7 +21,6 @@ import com.quattroventi.trip.Utils.Utils;
 
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,10 +28,11 @@ public class MapsDirectionApiHelper {
 
     public List<DirectionsRoute> call(Context context, Fermata partenza, Place arrivo, MapsDirectionApiOption option) {
 
+        Thread t = new Thread();
+        t.run();
         String apiKey = context.getResources().getString(R.string.google_maps_key);
         String url = getUrl(partenza, arrivo, option, apiKey);
-        Memory memory = Memory.getInstance();
-        memory.setAwaitingDirectionResponse(true);
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -41,9 +40,7 @@ public class MapsDirectionApiHelper {
                     public void onResponse(JSONObject response) {
                         Gson gson = new Gson();
                         DirectionsResult result = gson.fromJson(response.toString().replaceAll("-", "_"), DirectionsResult.class);
-                        Memory memory = Memory.getInstance();
-                        memory.setAwaitingDirectionResponse(false);
-                        memory.setDirectionsResult(result);
+
                     }
                 }, new Response.ErrorListener() {
 
@@ -54,23 +51,13 @@ public class MapsDirectionApiHelper {
                     }
                 });
 
-        while (!memory.isAwaitingDirectionResponse()) {
-            try {
-                wait(100);
-            } catch (Exception e) {
-                Log.e("Chiamata rest", "Errore in thread.wait");
-            }
-
-        }
 
         RequestCore.getInstance(context).addToRequestQueue(jsonObjectRequest);
-        if (memory.getDirectionsResult().geocoded_waypoints[0].geocoder_status.equals(GeocodedWaypointStatus.OK))
-            return Arrays.asList(memory.getDirectionsResult().routes);
-        else
-            return null;
 
-
+        return null;
     }
+
+
 
 
     private String getUrl(Fermata partenza, Place arrivo, MapsDirectionApiOption option, String apiKey) {

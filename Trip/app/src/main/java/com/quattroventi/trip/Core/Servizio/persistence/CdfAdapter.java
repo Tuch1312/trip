@@ -12,9 +12,23 @@ public class CdfAdapter extends GenericAdapter {
     }
 
 
-    public List<Cdf> getByViaggio() {return null;}//TODO getByViaggio (cdf))
-    public Cdf getById() {return null;}//TODO getById (cdf))
-    public List<Cdf> getBytappa() {return null;}//TODO getByTappa (cdf))
-    public boolean update() {return false;}//TODO update (cdf))
-    public boolean insert() {return false;}//TODO insert (cdf))
+    public List<Cdf> getByViaggio() {
+        return null;
+    }//TODO getByViaggio (cdf))
+
+    public Cdf getById() {
+        return null;
+    }//TODO getById (cdf))
+
+    public List<Cdf> getBytappa() {
+        return null;
+    }//TODO getByTappa (cdf))
+
+    public boolean update() {
+        return false;
+    }//TODO update (cdf))
+
+    public boolean insert() {
+        return false;
+    }//TODO insert (cdf))
 }
