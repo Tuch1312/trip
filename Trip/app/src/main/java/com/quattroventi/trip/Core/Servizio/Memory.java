@@ -11,7 +11,7 @@ public class Memory {
 
     }
 
-    public static Memory getInstance() {
+    public static synchronized Memory getInstance() {
         if (istance == null) {
             istance = new Memory();
         }
@@ -24,30 +24,36 @@ public class Memory {
 
     private boolean awaitingDirectionResponse;
 
-    private DirectionsResult directionsResult;
+    private String response;
 
 
-    public DirectionsResult getDirectionsResult() {
-        return directionsResult;
+    public synchronized String getResponse() {
+        return response;
     }
 
-    public void setDirectionsResult(DirectionsResult directionsResult) {
-        this.directionsResult = directionsResult;
+    public synchronized String getResponseOneTime() {
+        String r = new String(response);
+        response = null;
+        return r;
     }
 
-    public Viaggio getViaggioCorrente() {
+    public synchronized void  setResponse(String response) {
+        this.response = response;
+    }
+
+    public synchronized Viaggio getViaggioCorrente() {
         return viaggioCorrente;
     }
 
-    public void setViaggioCorrente(Viaggio viaggioCorrente) {
+    public synchronized void setViaggioCorrente(Viaggio viaggioCorrente) {
         this.viaggioCorrente = viaggioCorrente;
     }
 
-    public boolean isAwaitingDirectionResponse() {
+    public synchronized boolean isAwaitingDirectionResponse() {
         return awaitingDirectionResponse;
     }
 
-    public void setAwaitingDirectionResponse(boolean awaitingDirectionResponse) {
+    public synchronized void setAwaitingDirectionResponse(boolean awaitingDirectionResponse) {
         this.awaitingDirectionResponse = awaitingDirectionResponse;
     }
 }

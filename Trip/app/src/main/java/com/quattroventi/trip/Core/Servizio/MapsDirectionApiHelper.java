@@ -26,37 +26,17 @@ import java.util.List;
 
 public class MapsDirectionApiHelper {
 
-    public List<DirectionsRoute> call(Context context, Fermata partenza, Place arrivo, MapsDirectionApiOption option) {
-
-        Thread t = new Thread();
-        t.run();
+    public List<DirectionsRoute> call(final Context context,final Fermata partenza,final Place arrivo, final MapsDirectionApiOption option) {
         String apiKey = context.getResources().getString(R.string.google_maps_key);
         String url = getUrl(partenza, arrivo, option, apiKey);
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Gson gson = new Gson();
-                        DirectionsResult result = gson.fromJson(response.toString().replaceAll("-", "_"), DirectionsResult.class);
-
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-
-                    }
-                });
-
-
-        RequestCore.getInstance(context).addToRequestQueue(jsonObjectRequest);
-
-        return null;
+        String response = RequestCore.getInstance(context).call(context, url, Request.Method.GET, null);
+        Gson gson = new Gson();
+        DirectionsResult result = gson.fromJson(response.replaceAll("-", "_"), DirectionsResult.class);
+        if (result.geocoded_waypoints[0].geocoder_status.equals(GeocodedWaypointStatus.OK))
+            return Arrays.asList(result.routes);
+        else
+            return null;
     }
-
 
 
 
