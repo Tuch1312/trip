@@ -1,7 +1,11 @@
 package com.quattroventi.trip.Core.Servizio;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.quattroventi.trip.Model.Business.Viaggio;
 import com.quattroventi.trip.Model.Servizio.mapsModel.DirectionsResult;
+import com.quattroventi.trip.Model.Servizio.mapsModel.DirectionsRoute;
+
+import java.util.List;
 
 public class Memory {
 
@@ -22,20 +26,17 @@ public class Memory {
 
     private Viaggio viaggioCorrente;
 
-    private boolean awaitingDirectionResponse;
-
     private String response;
+
+    private List<DirectionsRoute> utilmeRotteSelezionate;
+    private DirectionsRoute rottaSelezionata;
+    private GoogleMap selectedMap;
 
 
     public synchronized String getResponse() {
         return response;
     }
 
-    public synchronized String getResponseOneTime() {
-        String r = new String(response);
-        response = null;
-        return r;
-    }
 
     public synchronized void  setResponse(String response) {
         this.response = response;
@@ -49,11 +50,27 @@ public class Memory {
         this.viaggioCorrente = viaggioCorrente;
     }
 
-    public synchronized boolean isAwaitingDirectionResponse() {
-        return awaitingDirectionResponse;
+    public synchronized List<DirectionsRoute> getUtilmeRotteSelezionate() {
+        return utilmeRotteSelezionate;
     }
 
-    public synchronized void setAwaitingDirectionResponse(boolean awaitingDirectionResponse) {
-        this.awaitingDirectionResponse = awaitingDirectionResponse;
+    public synchronized void setUtilmeRotteSelezionate(List<DirectionsRoute> utilmeRotteSelezionate) {
+        this.utilmeRotteSelezionate = utilmeRotteSelezionate;
+    }
+
+    public synchronized DirectionsRoute getRottaSelezionata() {
+        return rottaSelezionata;
+    }
+
+    public synchronized void setRottaSelezionata(DirectionsRoute rottaSelezionata) {
+        this.rottaSelezionata = rottaSelezionata;
+    }
+
+    public synchronized GoogleMap getSelectedMap() {
+        return selectedMap;
+    }
+
+    public synchronized void setSelectedMap(GoogleMap selectedMap) {
+        this.selectedMap = selectedMap;
     }
 }

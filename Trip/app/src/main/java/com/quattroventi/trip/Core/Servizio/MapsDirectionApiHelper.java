@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
 import com.google.android.gms.location.places.Place;
 import com.google.gson.Gson;
 import com.quattroventi.trip.Model.Business.Fermata;
@@ -23,20 +24,44 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class MapsDirectionApiHelper {
 
-    public List<DirectionsRoute> call(final Context context,final Fermata partenza,final Place arrivo, final MapsDirectionApiOption option) {
+    public List<DirectionsRoute> call(Context context, Fermata partenza, Place arrivo, MapsDirectionApiOption option) {
+
+        Thread t = new Thread();
+        t.run();
         String apiKey = context.getResources().getString(R.string.google_maps_key);
         String url = getUrl(partenza, arrivo, option, apiKey);
-        String response = RequestCore.getInstance(context).call(context, url, Request.Method.GET, null);
-        Gson gson = new Gson();
-        DirectionsResult result = gson.fromJson(response.replaceAll("-", "_"), DirectionsResult.class);
-        if (result.geocoded_waypoints[0].geocoder_status.equals(GeocodedWaypointStatus.OK))
-            return Arrays.asList(result.routes);
-        else
-            return null;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Gson gson = new Gson();
+                        DirectionsResult result = gson.fromJson(response.toString().replaceAll("-", "_"), DirectionsResult.class);
+                        GestoreRotte gestoreRotte = new GestoreRotte();
+                        gestoreRotte.directionApiCallBack(Arrays.asList(result.routes));
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+
+                    }
+                });
+
+
+        RequestCore.getInstance(context).addToRequestQueque(jsonObjectRequest);
+
+        return null;
     }
+
 
 
 
@@ -116,6 +141,8 @@ public class MapsDirectionApiHelper {
 
         return output;
     }
+
+
 
 
 }

@@ -15,7 +15,7 @@ public class MapsDrower {
             for (DirectionsRoute route : routes) {
                 map.addPolyline(
                         new PolylineOptions()
-                                .addAll(PolyUtil.decode(route.overviewPolyline.getEncodedPath()))
+                                .addAll(PolyUtil.decode(route.overview_polyline.getEncodedPath()))
                                 .clickable(true));
             }
 

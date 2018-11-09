@@ -31,6 +31,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.quattroventi.trip.Core.Servizio.MapsDirectionApiHelper;
 import com.quattroventi.trip.Core.Servizio.MapsDrower;
+import com.quattroventi.trip.Core.Servizio.Memory;
 import com.quattroventi.trip.Model.Business.Fermata;
 import com.quattroventi.trip.Model.Business.Tappa;
 import com.quattroventi.trip.Model.Servizio.MapsDirectionApiOption;
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        Memory.getInstance().setSelectedMap(googleMap);
         //Appena la mappa cricomi sposto sulla mia posizione corrente
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);

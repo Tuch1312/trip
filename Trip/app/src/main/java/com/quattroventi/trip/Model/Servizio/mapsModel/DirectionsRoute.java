@@ -36,7 +36,7 @@ public class DirectionsRoute implements Serializable {
     /**
      * An approximate (smoothed) path of the resulting directions.
      */
-    public EncodedPolyline overviewPolyline;
+    public EncodedPolyline overview_polyline;
 
     /**
      * The viewport bounding box of the overview_polyline.
